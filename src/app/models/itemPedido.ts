@@ -1,4 +1,4 @@
-export class Item {
+export class ItemPedido {
   DocEntry	=	0;
   DocNum	=	0;
   CardCode	="";

@@ -1,4 +1,4 @@
-import {Item} from "./item";
+import {ItemPedido} from "./itemPedido";
 
 export class Marca {
   FirmCode = 0;
@@ -7,7 +7,7 @@ export class Marca {
   importeVenta = 0;
   cantidad = 0;
 
-  constructor(item: Item) {
+  constructor(item: ItemPedido) {
     this.FirmCode = item.FirmCode;
     this.FirmName = item.FirmName;
   }

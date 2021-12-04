@@ -2,44 +2,125 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 html, body {
   margin: 0;
-  padding: 0;
+  padding: 20px;
 }
+
+$naranja: #ff8d22;
+$ancho-celda-cantidad : 80px;
+$ancho-celda-importe-venta : 150px;
+$ancho-celda-transito: 80px;
+$ancho-boton-expand: 50px;
+$paddin-celdad : 30px;
+$azul : steelblue;
+
 body{
   background-color: #f0f0f0;
   font-family: Roboto, 'Helvetice New', 'Arial', sans-serif
 }
 
 .marco-niveles{
-  padding: 10px;
+  padding: 20px;
   width: auto;
-  border-color: black;
+  border-color: $naranja;
   border-style: solid;
-  border-width: 2px;
+  border-width: 4px;
+  margin-bottom: 20px;
+  background: $azul;
+  border-radius: 20px;
+}
+
+.cabecera-celda{
+  background: $naranja;
+  color: white;
+  font-size: 16px;
+}
+
+.pie-celda{
+  background: $naranja;
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 12px;
 }
 
 .celda-1{
-  border-width: 2px;
+  border-width: 1px;
   border-style: solid;
   border-color: black;
 }
 
 .celda-2{
   @extend .celda-1;
-  padding-left: 20px;
-  border-width: 0 0 2px 0;
+  padding-left: $paddin-celdad;
+  border-width: 0 0 1px 0;
   background: #f0f0f0;
 }
 
 .celda-3{
   @extend .celda-1;
-  padding-left: 40px;
-  border-width: 0 0 2px 0;
+  padding-left: $paddin-celdad*2;
+  border-width: 0 0 1px 0;
   background: #b2b2b2;
 }
 
 .celda-4{
   @extend .celda-1;
-  padding-left: 60px;
+  padding-left: $paddin-celdad*3;
   border-width: 0 0 2px 0;
   background: #838383;
+}
+
+.celda-5{
+  @extend .celda-1;
+  padding-left: $paddin-celdad*4;
+  border-width: 0 0 2px 0;
+  background: #565656;
+}
+
+.w-cantidad{
+  width: $ancho-celda-cantidad;
+}
+
+.w-importe-venta{
+  width: $ancho-celda-importe-venta;
+}
+
+.w-trandito{
+  width: $ancho-celda-transito;
+}
+
+.buton-expand{
+  width: $ancho-boton-expand!important;
+  background: $naranja;
+  color: white;
+  border-radius: 5px;
+  border-color: #565656;
+  border-style: solid;
+  border-width: 1px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.texto-info{
+  font-size: 26px;
+  color: $naranja;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.texto-info-procesando{
+  font-size: 32px;
+  color: $naranja;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.nivel{
+  color: #fff!important;
+  background: $naranja !important;
+  text-align: center!important;
+  border-width: 2px!important;
+  border-color: white!important;
+  border-style: solid!important;
 }

@@ -1,7 +1,7 @@
 <!--Selecion de niveles-->
 <div class="marco-niveles justify-content-center d-flex flex-column">
-    <div class="text-center">
-        Niveles
+    <div class="text-center texto-info">
+        Niveles - ordene los niveles como los quiere ver
     </div>
     <div class="d-flex justify-content-center">
         <mat-chip-list
@@ -10,7 +10,7 @@
                 cdkDropListOrientation="horizontal"
                 (cdkDropListDropped)="drop($event)">
             <mat-chip
-                    class="example-box"
+                    class="example-box nivel"
                     cdkDrag
                     *ngFor="let nivel of niveles">
                 {{nivel.name}}
@@ -19,87 +19,147 @@
     </div>
 </div>
 <!--Mostrar item-->
-<div *ngFor="let lista of listaContenida" class="">
-    <div class="col-12 d-flex justify-content-between celda-1">
-        <div class="">
-            <button *ngIf="!lista.visible" style="width: 30px" (click)="setVisible(lista)">  ></button>
-            <button *ngIf="lista.visible" style="width: 30px" (click)="setVisible(lista)">  <</button>
-            {{obtenerDescripcionItem(0, lista.itemActual)}}
+<div class="col-12 d-flex justify-content-between cabecera-celda p-2">
+    <div class="">
+        Descripcion
+    </div>
+    <div class="d-flex">
+        <div class="w-cantidad text-right">
+            Cantidad
         </div>
-        <div class="d-flex">
-            <div style="width: 100px;">
-                {{lista.itemActual.cantidad | number:'1.0-0'}}
+        <div class="w-importe-venta text-right">
+            Importe de venta
+        </div>
+        <div class="w-trandito text-right">
+            Transito
+        </div>
+    </div>
+</div>
+<div *ngIf="!procesandoLista">
+    <div *ngFor="let lista of listaContenida" class="">
+        <div class="col-12 d-flex justify-content-between celda-1">
+            <div class="">
+                <button *ngIf="!lista.visible" class="buton-expand" (click)="setVisible(lista)">  ></button>
+                <button *ngIf="lista.visible" class="buton-expand" (click)="setVisible(lista)">  <</button>
+                {{obtenerDescripcionItem(0, lista.itemActual)}}
             </div>
-            <div style="width: 220px;">
-                {{lista.itemActual.importeVenta | number:'1.0-0'}}
+            <div class="d-flex">
+                <div class="w-cantidad">
+                    {{lista.itemActual.Quantity | number:'1.0-0'}}
+                </div>
+                <div class="w-importe-venta">
+                    {{lista.itemActual.LineTotal | number:'1.0-0'}}
+                </div>
+                <div class="w-trandito">
+                    {{lista.itemActual.TRANSITO | number:'1.0-0'}}
+                </div>
             </div>
-            <div style="width: 100px;">
-                {{lista.itemActual.transito | number:'1.0-0'}}
+        </div>
+        <div *ngIf="1 <= niveles.length && lista.visible" class="col-12">
+            <div *ngFor="let lista1 of lista.itemContenidos"  class=" col-12">
+                <div class="col-12 d-flex justify-content-between celda-2">
+                    <div class="">
+                        <button *ngIf="!lista1.visible" class="buton-expand" (click)="setVisible(lista1)">  ></button>
+                        <button *ngIf="lista1.visible" class="buton-expand" (click)="setVisible(lista1)">  <</button>
+                        {{obtenerDescripcionItem(1, lista1.itemActual)}}
+                    </div>
+                    <div class="d-flex">
+                        <div class="w-cantidad">
+                            {{lista1.itemActual.Quantity | number:'1.0-0'}}
+                        </div>
+                        <div class="w-importe-venta">
+                            {{lista1.itemActual.LineTotal | number:'1.0-0'}}
+                        </div>
+                        <div class="w-trandito">
+                            {{lista1.itemActual.TRANSITO | number:'1.0-0'}}
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="2 <= niveles.length && lista1.visible">
+                    <div *ngFor="let lista2 of lista1.itemContenidos;"  class="">
+                        <div class="col-12 d-flex justify-content-between celda-3">
+                            <div class="">
+                                <button *ngIf="!lista2.visible" class="buton-expand" (click)="setVisible(lista2)">  ></button>
+                                <button *ngIf="lista2.visible" class="buton-expand" (click)="setVisible(lista2)">  <</button>
+                                {{obtenerDescripcionItem(2, lista2.itemActual)}}
+                            </div>
+                            <div class="d-flex">
+                                <div class="w-cantidad">
+                                    {{lista2.itemActual.Quantity | number:'1.0-0'}}
+                                </div>
+                                <div class="w-importe-venta">
+                                    {{lista2.itemActual.LineTotal | number:'1.0-0'}}
+                                </div>
+                                <div class="w-trandito">
+                                    {{lista2.itemActual.TRANSITO | number:'1.0-0'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="3 <= niveles.length && lista2.visible">
+                            <div *ngFor="let lista3 of lista2.itemContenidos"  class="">
+                                <div class="col-12 d-flex justify-content-between celda-4">
+                                    <div class="">
+                                        <button *ngIf="!lista3.visible" class="buton-expand" (click)="setVisible(lista3)">  ></button>
+                                        <button *ngIf="lista3.visible" class="buton-expand" (click)="setVisible(lista3)">  <</button>
+                                        {{obtenerDescripcionItem(3, lista3.itemActual)}}
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="w-cantidad">
+                                            {{lista3.itemActual.Quantity | number:'1.0-0'}}
+                                        </div>
+                                        <div class="w-importe-venta">
+                                            {{lista3.itemActual.LineTotal | number:'1.0-0'}}
+                                        </div>
+                                        <div class="w-trandito">
+                                            {{lista3.itemActual.TRANSITO | number:'1.0-0'}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="4 <= niveles.length && lista3.visible">
+                                    <div *ngFor="let lista4 of lista3.itemContenidos">
+                                        <div class="col-12 d-flex justify-content-between celda-5">
+                                            <div class="">
+                                                {{obtenerDescripcionItem(4, lista4.itemActual)}}
+                                            </div>
+                                            <div class="d-flex">
+                                                <div class="w-cantidad">
+                                                    {{lista4.itemActual.Quantity | number:'1.0-0'}}
+                                                </div>
+                                                <div class="w-importe-venta">
+                                                    {{lista4.itemActual.LineTotal | number:'1.0-0'}}
+                                                </div>
+                                                <div class="w-trandito">
+                                                    {{lista4.itemActual.TRANSITO | number:'1.0-0'}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div *ngIf="1 <= niveles.length && lista.visible" class="col-12">
-        <div *ngFor="let lista1 of lista.itemContenidos"  class=" col-12">
-            <div class="col-12 d-flex justify-content-between celda-2">
-                <div class="">
-                    <button *ngIf="!lista1.visible" style="width: 30px" (click)="setVisible(lista1)">  ></button>
-                    <button *ngIf="lista1.visible" style="width: 30px" (click)="setVisible(lista1)">  <</button>
-                    {{obtenerDescripcionItem(1, lista1.itemActual)}}
-                </div>
-                <div class="d-flex">
-                    <div style="width: 60px;">
-                        {{lista1.itemActual.cantidad | number:'1.0-0'}}
-                    </div>
-                    <div style="width: 220px;">
-                        {{lista1.itemActual.importeVenta | number:'1.0-0'}}
-                    </div>
-                    <div style="width: 100px;">
-                        {{lista1.itemActual.transito | number:'1.0-0'}}
-                    </div>
-                </div>
+    <div class="col-12 d-flex justify-content-between pie-celda p-2">
+        <div class="">
+            TOTAL
+        </div>
+        <div class="d-flex">
+            <div class="w-cantidad text-right">
+                {{'$ ' + (cantidadTotal | number:'1.0-0')}}
             </div>
-            <div *ngIf="2 <= niveles.length && lista1.visible">
-                <div *ngFor="let lista2 of lista1.itemContenidos;"  class="">
-                    <div class="col-12 d-flex justify-content-between celda-3">
-                        <div class="">
-                            <button *ngIf="!lista2.visible" style="width: 30px" (click)="setVisible(lista2)">  ></button>
-                            <button *ngIf="lista2.visible" style="width: 30px" (click)="setVisible(lista2)">  <</button>
-                            {{obtenerDescripcionItem(2, lista2.itemActual)}}
-                        </div>
-                        <div class="d-flex">
-                            <div style="width: 60px;">
-                                {{lista2.itemActual.cantidad | number:'1.0-0'}}
-                            </div>
-                            <div style="width: 220px;">
-                                {{lista2.itemActual.importeVenta | number:'1.0-0'}}
-                            </div>
-                            <div style="width: 100px;">
-                                {{lista2.itemActual.transito | number:'1.0-0'}}
-                            </div>
-                        </div>
-                    </div>
-                    <div *ngIf="3 <= niveles.length && lista2.visible">
-                        <div *ngFor="let lista3 of lista2.itemContenidos"  class="">
-                            <div class="col-12 d-flex justify-content-between celda-4">
-                                <div class="">
-                                    {{obtenerDescripcionItem(3, lista3.itemActual)}}
-                                </div>
-                                <div class="d-flex">
-                                    <div style="width: 60px;">
-                                        {{lista3.itemActual.cantidad | number:'1.0-0'}}
-                                    </div>
-                                    <div style="width: 220px;">
-                                        {{lista3.itemActual.importeVenta | number:'1.0-0'}}
-                                    </div>
-                                    <div style="width: 100px;">
-                                        {{lista3.itemActual.transito | number:'1.0-0'}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="w-importe-venta text-right">
+                {{'$ ' + (importeVentaTotal | number:'1.0-0')}}
+            </div>
+            <div class="w-trandito text-right">
+                {{'$ ' + (transitoTotal | number:'1.0-0')}}
             </div>
         </div>
     </div>
 </div>
+<div *ngIf="procesandoLista" class="texto-info-procesando">
+    SE ESTA PROCESANDO LA LISTA, ESPERE UN MOMEMTO
+</div>
+
